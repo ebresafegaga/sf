@@ -421,8 +421,8 @@ Proof.
     + intros H.
       rewrite <- H.
       reflexivity.
-   Show Proof.
 Qed.
+
 Theorem andb_commutative'' :
   forall b c, andb b c = andb c b.
 Proof.
@@ -431,7 +431,6 @@ Proof.
   - reflexivity.
   - reflexivity.
   - reflexivity.
-  (* Show Proof. *)
 Qed.
 
 
@@ -441,68 +440,3 @@ Qed.
   | S k => k + non_term n
   end.
 *)
-
-Theorem identity_fn_applied_twice :
-  forall (f : bool -> bool),
-  (forall (x : bool), f x = x) -> 
-  forall (b : bool), f (f b) = b.
-Proof.
-  intros f.
-  intros H.
-  intros [].
-  - rewrite -> H.
-    rewrite -> H.
-    reflexivity.
-  - rewrite <- H.
-    rewrite <- H.
-    reflexivity.
-Qed.
-
-Theorem negation_fn_applied_twice :
-  forall (f : bool -> bool),
-  (forall (x : bool), f x = negb x) -> 
-  forall (b : bool), f (f b) = b.
-Proof.
-  intros f.
-  intros H.
-  intros [].
-  - rewrite -> H.
-    rewrite -> H.
-    simpl.
-    reflexivity.
-  - rewrite -> H.
-    rewrite -> H.
-    reflexivity.
-Qed.
-
-Lemma l1: forall c, true || c = true.
-Proof.
-  intros c.
-  simpl.
-  reflexivity.
-Qed.
-
-Lemma l2: forall c, false || c = c. 
-Proof.
-  intros c.
-  simpl.
-  reflexivity.
-Qed.  
-
-Theorem andb_eq_orb :
-  forall (b c : bool),
-  (andb b c = orb b c) -> 
-  b = c.
-Proof.
-  intros b c.
-  intros H.
-  destruct b.
-  - rewrite -> l1 in H.
-    rewrite <- H.
-    simpl.
-    reflexivity.
-  - rewrite -> l2 in H.
-    rewrite <- H.
-    simpl.
-    reflexivity.
- Qed.
