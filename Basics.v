@@ -501,8 +501,8 @@ Proof.
     rewrite <- H.
     simpl.
     reflexivity.
-  - rewrite -> l2 in H.
+(*  -  rewrite -> l2 in H.
     rewrite <- H.
     simpl.
     reflexivity.
- Qed.
+ Qed.*)
