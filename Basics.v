@@ -805,7 +805,14 @@ Fixpoint bin_to_nat' (m:bin) (i:nat): nat :=
   | B0 n => bin_to_nat' n (S i)
   end.                      
 
-Definition bin_to_nat (m: bin) : nat := bin_to_nat' m O.
+(* Definition bin_to_nat (m: bin) : nat := bin_to_nat' m O. *)
+
+Fixpoint bin_to_nat (m : bin) : nat :=
+  match m with
+  | Z => O
+  | B0 n => 2 * bin_to_nat n
+  | B1 n => 1 + 2 * bin_to_nat n
+  end.
 
 Example test_bin_incr1 : (incr (B1 Z)) = B0 (B1 Z).
 Proof.
